@@ -1,0 +1,659 @@
+/* ========================================================================
+   CSS Variable Definitions
+   ======================================================================== */
+/* This root section defines the color scheme and typography for the entire application.
+   Using CSS variables (custom properties) allows for easy theme modification and consistency. */
+   :root {
+      --color-primary: #e89098;     /* Salmon pink */
+      --color-secondary: #c77984;   /* Darker salmon */
+      --color-background: #93b1b4;  /* Sage green-blue background */
+      --color-monitor: #fbe4c6;     /* Light peachy yellow for monitor */
+      --color-content: #b5cecf;     /* Light sage green content areas */
+      --color-art-icons: #ffd4cc;   /* Light coral for art icons */
+      --color-project-icons: #9E9E9E; /* Keeping neutral gray */
+      --color-bottom-bar: #8a7b98;    /* Muted purple for taskbar */
+      --color-text-primary: #333;     /* Keeping dark gray for text */
+      --color-text-secondary: #666;   /* Keeping medium gray for secondary text */
+      --color-card-bg: #ffffff;       /* Keeping white for cards */
+      --color-white: #ffffff;         /* Pure white */
+      --color-overlay: rgba(0, 0, 0, 0.85); /* Keeping overlay */
+      --color-shadow: rgba(0, 0, 0, 0.05);  /* Keeping subtle shadow */
+      --color-shadow-primary: rgba(232, 144, 152, 0.3); /* Updated shadow to match new primary */
+      --color-border: rgba(0, 0, 0, 0.1);   /* Keeping subtle border */
+      --color-gradient-overlay: rgba(0, 0, 0, 0.7); /* Keeping gradient overlay */
+      --color-hover-primary: #fccfb9;        /* Lighter peach for hover */
+      --color-hover-light: rgba(255, 255, 255, 0.8); /* Keeping hover light */
+      --color-hover-accent: rgba(232, 144, 152, 0.1); /* Updated hover accent */
+      --font-primary: "Pangolin", serif;      /* Keeping font */
+   }
+   
+   /* ========================================================================
+      Base Layout Styles
+      ======================================================================== */
+   /* Basic page setup and container positioning */
+   body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--color-background);
+      font-family: var(--font-primary);
+   }
+   
+   /* Main desktop container that represents the monitor/screen */
+   .desktop-container {
+      position: relative;
+      width: 1500px;
+      height: 1000px;
+      background-image: url('free.png');
+      border: 5px solid #e9b394;
+      background-size: contain;
+      margin-top: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+   }
+   
+   /* Content area within the monitor */
+   .monitor-content {
+      position: absolute;
+      top: 11%;
+      left: 20.3%;
+      width: 74.5%;
+      height: 64.5%;
+      display: flex;
+      flex-direction: column;
+   }
+   
+   /* ========================================================================
+      Card Component Styles
+      ======================================================================== */
+   /* Base styles for card elements */
+   .section-card {
+      background-color: var(--color-card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      margin-top: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      box-shadow: 4px 4px var(--color-primary);
+   }
+   
+   /* Card header styling with star decoration */
+   .card-header {
+      background-color: var(--color-primary);
+      padding: 8px 15px;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+   }
+   
+   .card-header::before {
+      content: "★";
+      font-size: 12px;
+   }
+   
+   .card-content {
+      padding: 20px;
+   }
+   
+   /* ========================================================================
+      Navigation Section Styles
+      ======================================================================== */
+   /* Navigation section container */
+   .nav-section {
+      width: 45%;
+   }
+   
+   /* Icon grid layout */
+   .nav-icons {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+   }
+   
+   /* Individual navigation icon styling */
+   .nav-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+   }
+   
+   /* Icon container box */
+   .icon-box {
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--color-art-icons);
+      transition: transform 0.2s ease;
+   }
+   
+   .icon-box i {
+      color: var(--color-text-secondary);
+      font-size: 16px;
+   }
+   
+   /* ========================================================================
+      Status Section Styles
+      ======================================================================== */
+   /* Status section positioning */
+   .status-section {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      width: 300px;
+   }
+   
+   /* Status content layout */
+   .status-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 15px;
+   }
+   
+   .status-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+   }
+   
+   .status-content > div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+   }
+   
+   /* Commission status styling */
+   .commission-status {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+   }
+   
+   .commission-status div {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.4;
+   }
+   
+/* ========================================================================
+   Modal Styles
+   ======================================================================== */
+/* Base modal styling */
+.modal {
+   display: none;
+   position: fixed;
+   width: 800px;  /* Fixed width instead of percentage */
+   height: 600px; /* Fixed height instead of vh */
+   background: var(--color-card-bg);
+   border-radius: 12px;
+   z-index: 1000;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   box-shadow: 4px 4px var(--color-primary);
+   transition: all 0.3s ease;
+   overflow: hidden; /* Prevent content overflow */
+}
+
+/* Modal visibility states */
+.modal.show {
+   display: block;
+}
+
+/* Fullscreen modal state */
+.modal.fullscreen {
+   width: calc(100vw - 40px) !important;
+   height: calc(100vh - 40px) !important;
+   top: 20px !important;
+   left: 20px !important;
+   transform: none !important;
+   border-radius: 12px;
+}
+
+/* Modal header styling */
+.modal-header {
+   background: var(--color-primary);
+   padding: 12px 16px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   cursor: move;
+   border-radius: 12px 12px 0 0;
+   color: var(--color-white);
+   user-select: none; /* Prevent text selection while dragging */
+}
+
+.modal-title {
+   margin: 0;
+   font-size: 1.2rem;
+   font-weight: normal;
+}
+
+/* Modal controls container */
+.modal-controls {
+   display: flex;
+   gap: 8px;
+   align-items: center;
+}
+
+/* Modal control buttons */
+.modal-controls button {
+   background: none;
+   border: none;
+   color: var(--color-white);
+   cursor: pointer;
+   width: 24px;
+   height: 24px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 4px;
+   transition: background-color 0.2s;
+}
+
+.modal-controls button:hover {
+   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-controls .close-button {
+   font-size: 20px;
+   line-height: 1;
+}
+
+.modal-controls i {
+   font-size: 14px;
+}
+
+/* Modal content area */
+.modal-content {
+   height: calc(100% - 48px); /* Subtract header height */
+   padding: 20px;
+   background: var(--color-content);
+   overflow-y: auto;
+   scrollbar-width: thin;
+   scrollbar-color: var(--color-primary) var(--color-content);
+}
+
+/* Custom scrollbar styling */
+.modal-content::-webkit-scrollbar {
+   width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+   background: var(--color-content);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+   background-color: var(--color-primary);
+   border-radius: 4px;
+   border: 2px solid var(--color-content);
+}
+
+/* Modal animations */
+.modal {
+   opacity: 0;
+   transform: translate(-50%, -48%) scale(0.98);
+   transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.modal.show {
+   opacity: 1;
+   transform: translate(-50%, -50%) scale(1);
+}
+
+/* Modal transition states */
+.modal.minimizing {
+   transform: translate(-50%, 50%) scale(0.8);
+   opacity: 0;
+}
+
+.modal.maximizing {
+   transform: translate(-50%, -50%) scale(1.02);
+}
+   /* ========================================================================
+      Commission Navigation Styles
+      ======================================================================== */
+   /* Commission navigation container */
+   .commission-nav {
+      background: var(--color-card-bg);
+      padding: 1rem;
+      margin: -1rem -1rem 1rem -1rem;
+      border-radius: 12px 12px 0 0;
+      border-bottom: 2px solid var(--color-primary);
+   }
+   
+   /* Navigation list container */
+   .commission-nav-list {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+   }
+   
+   /* Navigation item styling */
+   .commission-nav-item {
+      padding: 0.5rem 1.2rem;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      background: var(--color-content);
+      border: none;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      box-shadow: 2px 2px var(--color-primary);
+   }
+   
+   /* Active navigation item state */
+   .commission-nav-item.active {
+      background: var(--color-primary);
+      color: var(--color-white);
+      box-shadow: inset 2px 2px rgba(0, 0, 0, 0.1);
+      transform: translateY(1px);
+   }
+   
+   /* ========================================================================
+      Commission Cards Styles
+      ======================================================================== */
+   /* Commission card container */
+   .commission-card {
+      background: var(--color-card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 4px 4px var(--color-primary);
+   }
+   
+   /* Commission card header */
+   .commission-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-primary);
+   }
+   
+   /* Commission examples grid */
+   .commission-examples {
+      display: grid;
+      grid-template-columns: repeat(2, 200px);
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+   }
+   
+   /* Example image container */
+   .example-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 2px 2px var(--color-primary);
+   }
+   
+   /* Example image styling */
+   .example-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+   }
+   
+   /* ========================================================================
+      Taskbar Styles
+      ======================================================================== */
+   /* Taskbar container */
+   .taskbar {
+      position: absolute;
+      bottom: -55px;
+      left: 1.5px;
+      right: 2px;
+      height: 40px;
+      background-color: var(--color-bottom-bar);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+      box-shadow: 4px 4px var(--color-shadow-primary);
+   }
+   
+   /* Start button container */
+   .taskbar-start-container {
+      position: relative;
+   }
+   
+   /* Start button styling */
+   .taskbar-start {
+      background: var(--color-secondary);
+      color: var(--color-white);
+      border: none;
+      border-radius: 999px;
+      padding: 0.5rem 1.5rem;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-primary);
+   }
+   
+   /* Taskbar items container */
+   .taskbar-items {
+      display: flex;
+      gap: 0.5rem;
+      flex: 1;
+      padding: 0 1rem;
+   }
+   
+   /* Individual taskbar item */
+   .taskbar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      background: var(--color-hover-light);
+      border-radius: 4px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      font-family: var(--font-primary);
+   }
+   
+   /* Active taskbar item state */
+   .taskbar-item.active {
+      background: var(--color-white);
+      box-shadow: inset 0 -2px 0 var(--color-primary);
+   }
+   
+   /* Taskbar item icon */
+   .taskbar-item i {
+      font-size: 14px;
+      color: var(--color-primary);
+   }
+   
+   /* ========================================================================
+      Start Menu Styles
+      ======================================================================== */
+   /* Start menu container */
+   .start-menu {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 0;
+      background: var(--color-white);
+      border-radius: 12px;
+      box-shadow: 4px 4px var(--color-primary);
+      display: none;
+      padding: 0.5rem;
+      min-width: 200px;
+      z-index: 1001;
+   }
+   
+   /* Start menu visibility state */
+   .start-menu.show {
+      display: block;
+   }
+   
+   /* Start menu item styling */
+   .start-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      width: 100%;
+      text-align: left;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      font-family: var(--font-primary);
+   }
+   
+   /* Start menu divider */
+   .start-menu-divider {
+      height: 2px;
+      background: var(--color-shadow-primary);
+      margin: 8px 0;
+      border-radius: 999px;
+   }
+   
+   /* ========================================================================
+      Sticky Note Styles
+      ======================================================================== */
+   /* Sticky note container */
+   .sticky-note {
+      position: absolute;
+      top: 11%;
+      left: 1.5%;
+      width: 11.5%;
+      padding: 1rem;
+      height: 35%;
+      overflow-y: scroll;
+      scrollbar-width: none;
+   }
+   
+   /* Hide scrollbar for Chrome, Safari and Opera */
+   .sticky-note::-webkit-scrollbar {
+      display: none;
+   }
+   
+   /* Sticky note title */
+   .note-title {
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--color-text-primary);
+   }
+   
+   /* Update card container within sticky note */
+   .update-card {
+      background: rgba(243, 125, 144, 0.2);
+      border-radius: 4px;
+      width: 95%;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+   }
+   
+   /* Update text styling */
+   .update-text {
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+   }
+   
+   /* Update date styling */
+   .update-date {
+      font-family: var(--font-primary);
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+   }
+   
+   /* ========================================================================
+      Site Header Styles
+      ======================================================================== */
+   /* Main site header container */
+   .site-header {
+      width: 1200px;
+      margin: 0 auto 20px auto;
+      text-align: center;
+      padding: 15px;
+      background-color: var(--color-primary);
+      border-radius: 15px;
+      box-shadow: 4px 4px var(--color-secondary);
+      font-family: var(--font-primary);
+   }
+   
+   /* Site header title */
+   .site-header h1 {
+      color: white;
+      margin: 0;
+      font-size: 2.5em;
+      text-shadow: 2px 2px var(--color-secondary);
+   }
+   
+   /* Star decorations for site header */
+   .site-header h1::before,
+   .site-header h1::after {
+      content: "★";
+      margin: 0 10px;
+      font-size: 0.8em;
+   }
+   
+   /* Desktop header styling */
+   .desktop-header {
+      position: absolute;
+      top: -70px;
+      left: 0;
+      right: 0;
+      text-align: left;
+      padding: 10px;
+      border-radius: 8px;
+      font-family: var(--font-primary);
+      color: var(--color-secondary);
+      font-size: 1.8em;
+      letter-spacing: 1px;
+   }
+   
+   /* ========================================================================
+      Status Avatar Styles
+      ======================================================================== */
+   /* Avatar container */
+   .status-avatar {
+      width: 132px;
+      height: 64px;
+      border-radius: 6px;
+      background: var(--color-primary);
+      opacity: 0.8;
+      overflow: hidden;
+   }
+   
+   /* Avatar image styling */
+   .avatar-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+   }
+   

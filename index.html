@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3SKTOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="desktop-container">
+        <div class="desktop-header">★ D3SKTOP ★</div>
+        <div class="sticky-note">
+            <div class="note-title">Recent Updates</div>
+            <div class="note-content">
+                <div class="update-card">
+                    <div class="update-text">Lorem ipsum dolor sit amet</div>
+                    <div class="update-date">2024.12.25</div>
+                </div>
+                <div class="update-card">
+                    <div class="update-text">Consectetur adipiscing elit</div>
+                    <div class="update-date">2024.12.24</div>
+                </div>
+            </div>
+        </div>
+        <div class="monitor-content">
+            <!-- Navigation Section -->
+            <div class="section-card nav-section">
+                <div class="card-header">Art</div>
+                <div class="nav-icons">
+                    <div class="nav-icon" data-modal="modal1">
+                        <div class="icon-box">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        Modal 1
+                    </div>
+                    <div class="nav-icon" data-modal="modal2">
+                        <div class="icon-box">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        Modal 2
+                    </div>
+                    <div class="nav-icon" data-modal="modal3">
+                        <div class="icon-box">
+                            <i class="fas fa-list-check"></i>
+                        </div>
+                        Modal 3
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Section -->
+            <div class="status-section">
+                <div class="section-card">
+                    <div class="card-header">Status</div>
+                    <div class="status-content">
+                        <div class="status-avatar">
+                            <img src="/api/placeholder/132/64" alt="Profile" class="avatar-image">
+                        </div>
+                        <div class="status-info">
+                            <div class="status-name">Lorem Ipsum</div>
+                            <div class="status-message">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">Status</div>
+                    <div class="commission-status">
+                        <div class="status-item">Status: <span class="highlight">Lorem</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modals -->
+            <div class="modal" id="modal1">
+                <div class="modal-header">
+                    <h3 class="modal-title">Modal 1</h3>
+                    <div class="modal-controls">
+                        <button class="minimize-button"><i class="fas fa-minus"></i></button>
+                        <button class="fullscreen-button"><i class="fas fa-expand"></i></button>
+                        <button class="close-button">×</button>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <!-- Your content goes here -->
+                    <div class="content-container">
+                        <!-- Add your specific content structure here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal" id="modal2">
+                <div class="modal-header">
+                    <h3 class="modal-title">Modal 2</h3>
+                    <div class="modal-controls">
+                        <button class="minimize-button"><i class="fas fa-minus"></i></button>
+                        <button class="fullscreen-button"><i class="fas fa-expand"></i></button>
+                        <button class="close-button">×</button>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <!-- Your content goes here -->
+                    <div class="content-container">
+                        <!-- Add your specific content structure here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal" id="modal3">
+                <div class="modal-header">
+                    <h3 class="modal-title">Modal 3</h3>
+                    <div class="modal-controls">
+                        <button class="minimize-button"><i class="fas fa-minus"></i></button>
+                        <button class="fullscreen-button"><i class="fas fa-expand"></i></button>
+                        <button class="close-button">×</button>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <!-- Your content goes here -->
+                    <div class="content-container">
+                        <!-- Add your specific content structure here -->
+                    </div>
+                </div>
+            </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-start-container">
+                <button class="taskbar-start">Start</button>
+                <div class="start-menu">
+                    <button class="start-menu-item" data-modal="modal1">
+                        <i class="fas fa-image"></i><span>Modal 1</span>
+                    </button>
+                    <button class="start-menu-item" data-modal="modal2">
+                        <i class="fas fa-palette"></i><span>Modal 2</span>
+                    </button>
+                    <button class="start-menu-item" data-modal="modal3">
+                        <i class="fas fa-tasks"></i><span>Modal 3</span>
+                    </button>
+                    <div class="start-menu-divider"></div>
+                    <button class="start-menu-item">
+                        <i class="fas fa-power-off"></i><span>Power</span>
+                    </button>
+                </div>
+            </div>
+            <div class="taskbar-items"></div>
+            <div class="taskbar-right">
+                <span class="timestamp"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
